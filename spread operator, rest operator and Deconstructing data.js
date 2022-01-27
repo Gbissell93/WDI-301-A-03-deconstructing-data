@@ -1,13 +1,16 @@
 const userPersonalData = {
-  name: 'peter',
-  age: '56',
-  birthday: 'jan 1st',
- };
- const userGameData = {
+  name: "peter",
+  age: "56",
+  birthday: "jan 1st",
+};
+const userGameData = {
   score: 4546,
-  accomplishments: ['won award for being good gamer', 'won 1st win', 'got good score on the weekend'],
- };
-  
+  accomplishments: [
+    "won award for being good gamer",
+    "won 1st win",
+    "got good score on the weekend",
+  ],
+};
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 1. Combine the personalData and userGameData into a user object that is equal to the object below, by using the spread operator:
@@ -19,49 +22,55 @@ const userPersonalData = {
 //  accomplishments: ['won award for being good gamer', 'won 1st win', 'got good score on the weekend'],
 // }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
+const newUser = { ...userPersonalData, ...userGameData };
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 2. Make a copy of your new user object but overrode the birthday to december 31st
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- 
+const newNewUser = { ...newUser, birthday: "Dec 31st" };
 
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 3. Use the spread operator to make a copy of the accomplishments array and store it i na new variable
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
+const { accomplishments } = userGameData;
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 
+//
 //  4.Given the object bellow, use object destructuring to get the favorite food value (user.name.favoriteThings.food)
 //  and store it in a variable name food
-// 
+//
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 var user = {
-  name: 'pete',
-  age: '32',
+  name: "pete",
+  age: "32",
   favoriteThings: {
-    food: ['pizza', 'tacos', 'burgers', 'italian'],
+    food: ["pizza", "tacos", "burgers", "italian"],
     movies: [],
   },
- };
- 
+};
+
+const {
+  favoriteThings: { food },
+} = user;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 5. Once you have grabbed the favorite foods. Descontrusct the food array to grab only the first 2 values. //
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+const [pizza, tacos] = food;
+console.log(pizza);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// 6. use object deconstruction and the rest operator to transform the following array into 3 variables: name, age, and food. 
+// 6. use object deconstruction and the rest operator to transform the following array into 3 variables: name, age, and food.
 //    the food variable should have all the array items starting from the third one.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const data = ['peter', '34', 'apple', 'oranges', 'pizza', 'tacos'];
+const data = ["peter", "34", "apple", "oranges", "pizza", "tacos"];
 
+function UserData(data) {
+  const [name, age, ...food] = data;
+  this.name = name;
+  this.age = age;
+  this.food = food;
+}
 
+const newData = new UserData(data);
 
+console.log(newData);
